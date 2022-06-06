@@ -42,7 +42,9 @@ func Test_checkIsLeapYear(t *testing.T) {
 		args args
 		want bool
 	}{
-		// TODO: Add test cases.
+		{"Non Leap Year", args{1998}, false},
+		{"Leap Year", args{2024}, true},
+		{"Leap Year", args{2020}, true},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

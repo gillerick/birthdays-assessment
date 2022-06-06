@@ -1,0 +1,6 @@
+1. Read birthdays from source file (JSON)
+2. Map the birthdays to the expected interface
+3. Loop through the mapped values and perform a birthday check
+3.1. Check if the birthday falls on 29th of February and perform a leap year check
+3.2. Collect the current birthdays into a array
+3.3. Print out all the birthdays

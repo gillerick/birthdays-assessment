@@ -8,7 +8,7 @@ import (
 	"time"
 )
 
-func main()  {
+func main() {
 	//1. Read birthdays from source file (JSON)
 	birthdaysByte, _ := ioutil.ReadFile("birthdays.json")
 
@@ -17,7 +17,7 @@ func main()  {
 	var birthdaysArray multiStringArray
 
 	//2. Map the birthdays to the expected interface
-	if err := json.Unmarshal(birthdaysByte, &birthdaysArray); err != nil{
+	if err := json.Unmarshal(birthdaysByte, &birthdaysArray); err != nil {
 		panic(err)
 	}
 
@@ -28,12 +28,13 @@ func main()  {
 	for _, birthday := range birthdaysArray {
 		dates, err := birthdayUtils.CheckIfBirthday(birthday, time.Now())
 
-		if err != nil{
+		if err != nil {
 			panic(err)
 		}
 
-		todayBirthdays = append(todayBirthdays, dates)
-
+		if dates != nil {
+			todayBirthdays = append(todayBirthdays, dates)
+		}
 
 	}
 

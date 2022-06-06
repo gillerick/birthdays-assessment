@@ -32,3 +32,8 @@ Your submission must have:
 Bonus points for following Test-Driven Development.
 
 Please do not overcomplicate the code. You don’t need a web framework, database or message queues for this submission. Keep it simple!
+
+Instructions
+1. To run the application, execute `make run` command in the terminal
+2. To run the unit tests, execute the `make test` command in terminal
+3. To run the application and tests, execute the `make all` command

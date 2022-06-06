@@ -20,7 +20,8 @@ func TestCheckIfBirthday(t *testing.T) {
 	}{
 		{"Valid date format: Non Leap Year Birthday", args{[]string{"John", "Doe", "1996/03/23"}, time.Date(2022, 03, 23, 03, 34, 45, 23, time.Local)}, []string{"John", "Doe", "1996/03/23"}, false},
 		{"Invalid date format: Non Leap Year Birthday", args{[]string{"John", "Doe", "1996/23/03"}, time.Date(2022, 03, 23, 03, 34, 45, 23, time.Local)}, nil, true},
-		{"Valid date format: Leap Year Birthday", args{[]string{"John", "Doe", "1996/02/29"}, time.Date(2020, 02, 28, 03, 34, 45, 23, time.Local)},[]string{"John", "Doe", "1996/02/29"} , false},
+		{"Valid date format: Leap Year Birthday - Non Leap Year", args{[]string{"John", "Doe", "1996/02/29"}, time.Date(2020, 02, 28, 03, 21, 51, 53, time.Local)},[]string{"John", "Doe", "1996/02/29"} , false},
+		{"Valid date format: Leap Year Birthday - Leap Year", args{[]string{"John", "Doe", "1996/02/29"}, time.Date(2024, 02, 29, 03, 34, 32, 230, time.Local)},[]string{"John", "Doe", "1996/02/29"} , false},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

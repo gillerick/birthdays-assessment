@@ -4,3 +4,6 @@
 3.1. Check if the birthday falls on 29th of February and perform a leap year check
 3.2. Collect the current birthdays into a array
 3.3. Print out all the birthdays
+
+Note: Even though TDD wasn't followed, the code was written with testability in mind and the testing phase used as
+an opportunity to improve the test and fix any unhandled edge cases

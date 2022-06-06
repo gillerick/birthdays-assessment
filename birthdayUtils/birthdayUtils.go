@@ -16,10 +16,25 @@ func CheckIfBirthday(dateOfBirth []string, currentDate time.Time) ([]string, err
 
 	currentDay := currentDate.Day()
 	currentMonth := currentDate.Month()
+	currentYear := currentDate.Year()
 
-	if currentMonth == birthDate.Month() && currentDay == birthDate.Day() {
-		return dateOfBirth, nil
+	//	3.1. Check if the birthday falls on 29th of February and perform a leap year check
+	if checkIsLeapYear(currentYear) {
+		if birthDate.Month() == time.February && birthDate.Day() == 29 && currentDay == 28 {
+			return dateOfBirth, nil
+		}
 	} else {
-		return nil, nil
+		if currentMonth == birthDate.Month() && currentDay == birthDate.Day() {
+			return dateOfBirth, nil
+		} else {
+			return nil, nil
+		}
 	}
+	return nil, nil
+
+}
+
+/*This function name begins in lowercase for access control; we are only using it within this package*/
+func checkIsLeapYear(year int) bool {
+	return year%4 == 0
 }

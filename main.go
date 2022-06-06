@@ -32,11 +32,13 @@ func main() {
 			panic(err)
 		}
 
+//		3.2. Collect the current birthdays into an array
 		if dates != nil {
 			todayBirthdays = append(todayBirthdays, dates)
 		}
 
 	}
 
+	//3.3. Print out all the birthdays
 	fmt.Printf("Today's Birthdays: %s", todayBirthdays)
 }

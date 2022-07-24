@@ -1,10 +1,11 @@
 package main
 
 import (
-	"birthdayUtils/birthdayUtils"
+	"birthday/birthday"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"log"
 	"time"
 )
 
@@ -18,21 +19,21 @@ func main() {
 
 	//2. Map the birthdays to the expected interface
 	if err := json.Unmarshal(birthdaysByte, &birthdaysArray); err != nil {
-		panic(err)
+		log.Printf("failed to map birthdays to interface: %v", err)
 	}
 
 	//Initialize empty array of type multiStringArray for storing today's birthdays
 	todayBirthdays := make(multiStringArray, 0)
 
-	//3. Loop through the mapped values and perform a birthday check
-	for _, birthday := range birthdaysArray {
-		dates, err := birthdayUtils.CheckIfBirthday(birthday, time.Now())
+	//3. Loop through the mapped values and perform a birthDate check
+	for _, birthDate := range birthdaysArray {
+		dates, err := birthday.CheckIfBirthday(birthDate, time.Now())
 
 		if err != nil {
-			panic(err)
+			log.Printf("There was an error checking the birth date: %v", err)
 		}
 
-//		3.2. Collect the current birthdays into an array
+		//		3.2. Collect the current birthdays into an array
 		if dates != nil {
 			todayBirthdays = append(todayBirthdays, dates)
 		}

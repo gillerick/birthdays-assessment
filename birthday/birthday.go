@@ -1,6 +1,9 @@
-package birthdayUtils
+package birthday
 
-import "time"
+import (
+	"log"
+	"time"
+)
 
 // CheckIfBirthday /*This method signature is for the purpose of enabling testing.
 //We are deliberately passing the currentDate as opposed to instantiating it within the function
@@ -11,7 +14,7 @@ func CheckIfBirthday(dateOfBirth []string, currentDate time.Time) ([]string, err
 	birthDate, err := time.Parse("2006/01/02", dateOfBirth[len(dateOfBirth)-1])
 
 	if err != nil {
-		return nil, err
+		log.Printf("Parsing of birth date failed: %v", err)
 	}
 
 	currentDay := currentDate.Day()
@@ -20,13 +23,13 @@ func CheckIfBirthday(dateOfBirth []string, currentDate time.Time) ([]string, err
 
 	//	3.1. Check if the birthday falls on 29th of February and perform a leap year check
 
-		if currentMonth == birthDate.Month() && currentDay == birthDate.Day() {
-			return dateOfBirth, nil
-		} else {
-			if checkIsLeapYear(currentYear) {
-				if birthDate.Month() == time.February && birthDate.Day() == 29 && currentDay == 28 {
-					return dateOfBirth, nil
-				}
+	if currentMonth == birthDate.Month() && currentDay == birthDate.Day() {
+		return dateOfBirth, nil
+	} else {
+		if checkIsLeapYear(currentYear) {
+			if birthDate.Month() == time.February && birthDate.Day() == 29 && currentDay == 28 {
+				return dateOfBirth, nil
+			}
 			return nil, nil
 		}
 	}

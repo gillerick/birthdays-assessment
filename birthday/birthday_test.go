@@ -1,4 +1,4 @@
-package birthdayUtils
+package birthday
 
 import (
 	"reflect"
